@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "9ck7pJnHuRU=",
+  "success": true,
+  "projectFilePath": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj",
+  "expectedPackageFiles": [
+    "/home/feri/.nuget/packages/erroror/2.0.1/erroror.2.0.1.nupkg.sha512",
+    "/home/feri/.nuget/packages/mediatr/12.5.0/mediatr.12.5.0.nupkg.sha512",
+    "/home/feri/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/home/feri/.nuget/packages/microsoft.aspnetcore.jsonpatch/9.0.0/microsoft.aspnetcore.jsonpatch.9.0.0.nupkg.sha512",
+    "/home/feri/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/9.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.9.0.0.nupkg.sha512",
+    "/home/feri/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/home/feri/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/feri/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/feri/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

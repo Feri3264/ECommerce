@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.JsonPatch">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.aspnetcore.jsonpatch\9.0.0\lib\net9.0\Microsoft.AspNetCore.JsonPatch.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

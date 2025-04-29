@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bWXd3FRWFHQ=",
+  "success": true,
+  "projectFilePath": "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/feri/.nuget/packages/erroror/2.0.1/erroror.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

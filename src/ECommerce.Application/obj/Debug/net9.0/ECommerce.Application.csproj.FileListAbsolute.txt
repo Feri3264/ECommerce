@@ -1,0 +1,16 @@
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/bin/Debug/net9.0/ECommerce.Application.deps.json
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/bin/Debug/net9.0/ECommerce.Application.dll
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/bin/Debug/net9.0/ECommerce.Application.pdb
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/bin/Debug/net9.0/ECommerce.Domain.dll
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/bin/Debug/net9.0/ECommerce.Domain.pdb
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.csproj.AssemblyReference.cache
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.AssemblyInfoInputs.cache
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.AssemblyInfo.cs
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.csproj.CoreCompileInputs.cache
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.sourcelink.json
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerc.670E0CBE.Up2Date
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.dll
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/refint/ECommerce.Application.dll
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ECommerce.Application.pdb
+/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/Debug/net9.0/ref/ECommerce.Application.dll
