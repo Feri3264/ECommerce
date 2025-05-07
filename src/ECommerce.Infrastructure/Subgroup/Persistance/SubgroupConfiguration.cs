@@ -1,6 +1,7 @@
 using ECommerce.Domain.Group;
 using ECommerce.Domain.Product;
 using ECommerce.Domain.Subgroup;
+using ECommerce.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,6 +18,7 @@ internal class SubgroupConfiguration : IEntityTypeConfiguration<SubgroupModel>
         
         builder.Property(s => s.Name).HasMaxLength(100).IsRequired();
         builder.Property(s => s.IsDelete).IsRequired();
+        builder.Property(s => s.ProductIds).HasListOfIdsConverter();
         
         builder.Property(s => s.GroupId)
             .HasColumnType("uniqueidentifier").IsRequired();

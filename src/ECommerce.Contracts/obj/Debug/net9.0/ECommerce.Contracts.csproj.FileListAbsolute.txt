@@ -14,3 +14,15 @@
 /home/feri/Feri/Drive/Code/src/ECommerce.Contracts/bin/Debug/net9.0/Microsoft.AspNetCore.JsonPatch.xml
 /home/feri/Feri/Drive/Code/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.csproj.AssemblyReference.cache
 /home/feri/Feri/Drive/Code/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerc.3997ADB3.Up2Date
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/bin/Debug/net9.0/ECommerce.Contracts.deps.json
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/bin/Debug/net9.0/ECommerce.Contracts.dll
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/bin/Debug/net9.0/ECommerce.Contracts.pdb
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.AssemblyInfoInputs.cache
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.AssemblyInfo.cs
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.csproj.CoreCompileInputs.cache
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.sourcelink.json
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.dll
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/refint/ECommerce.Contracts.dll
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ECommerce.Contracts.pdb
+/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/Debug/net9.0/ref/ECommerce.Contracts.dll

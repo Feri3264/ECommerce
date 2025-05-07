@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9ck7pJnHuRU=",
+  "dgSpecHash": "gkM2M0VnTX4=",
   "success": true,
-  "projectFilePath": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj",
+  "projectFilePath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj",
   "expectedPackageFiles": [
     "/home/feri/.nuget/packages/erroror/2.0.1/erroror.2.0.1.nupkg.sha512",
     "/home/feri/.nuget/packages/mediatr/12.5.0/mediatr.12.5.0.nupkg.sha512",

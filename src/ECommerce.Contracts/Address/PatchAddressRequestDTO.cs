@@ -5,4 +5,5 @@ public record PatchAddressRequestDTO
         string? City,
         string? Street,
         string? Alley,
-        string? Plate);
+        string? Plate,
+        Guid? UserId);

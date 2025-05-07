@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj": {}
+    "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj": {}
   },
   "projects": {
-    "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj": {
+    "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj",
+        "projectUniqueName": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj",
         "projectName": "ECommerce.Application",
-        "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj",
+        "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj",
         "packagesPath": "/home/feri/.nuget/packages/",
-        "outputPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/obj/",
+        "outputPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/feri/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj": {
-                "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj"
+              "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/ECommerce.Domain.csproj": {
+                "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/ECommerce.Domain.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj": {
+    "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/ECommerce.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj",
+        "projectUniqueName": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/ECommerce.Domain.csproj",
         "projectName": "ECommerce.Domain",
-        "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/ECommerce.Domain.csproj",
+        "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/ECommerce.Domain.csproj",
         "packagesPath": "/home/feri/.nuget/packages/",
-        "outputPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Domain/obj/",
+        "outputPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/feri/.nuget/NuGet/NuGet.Config"

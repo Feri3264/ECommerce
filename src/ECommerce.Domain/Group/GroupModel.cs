@@ -11,7 +11,7 @@ public class GroupModel : BaseModel
     public bool IsDelete { get; private set; }
 
     //navigation
-    public List<Guid>? SubgroupIds { get; private set; }
+    public readonly List<Guid>? SubgroupIds = new();
 
     //ctor
     public GroupModel(string _name,
@@ -31,7 +31,7 @@ public class GroupModel : BaseModel
     
     public ErrorOr<Success> AddSubgroup(Guid id)
     {
-        if (SubgroupIds == null)
+        if (SubgroupIds.Count == 0)
         {
             SubgroupIds.Add(id);
             return Result.Success;

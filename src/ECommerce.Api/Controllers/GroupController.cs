@@ -29,17 +29,20 @@ public class GroupController
 
         var exitingSubgroups = new GetSubgroupsByGroupQuery(id);
         var subgroupsModels = await _mediator.Send(exitingSubgroups);
-        
+
         List<SubgroupResponse> subgroups = new List<SubgroupResponse>();
-        foreach (var subgroupModel in subgroupsModels.Value)
+        if (subgroupsModels.Value is not null)
         {
-            subgroups.Add(new SubgroupResponse(
-                id: subgroupModel.Id,
-                name: subgroupModel.Name,
-                groupId: id));
+            foreach (var subgroupModel in subgroupsModels.Value)
+            {
+                subgroups.Add(new SubgroupResponse(
+                    id: subgroupModel.Id,
+                    name: subgroupModel.Name,
+                    groupId: id));
+            }
         }
 
-        var response = new GroupResponse(
+        GroupResponse response = new GroupResponse(
             groupId: id,
             name: groupResult.Value.Name,
             Subgroups: subgroups);

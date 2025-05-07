@@ -9,8 +9,9 @@ public class ShopcartModel : BaseModel
     public int TotalPrice { get; private set; }
 
     //navigation
-    public List<Guid>? OrderItemIds { get; private set; }
-    public List<Guid>? ShopcartProductId { get; private set; }
+    public List<Guid>? OrderItemIds = new();
+    
+    public List<Guid>? ShopcartProductId = new();
     public Guid? AddressId { get; private set; }
     public Guid UserId { get; private set; }
 

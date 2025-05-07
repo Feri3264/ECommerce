@@ -17,7 +17,7 @@ public class WishlistController
     #region GetWishlist
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetWishlist([FromQuery] Guid id)
+    public async Task<IActionResult> GetWishlist([FromRoute] Guid id)
     {
         var exitingWishlist= new GetWishlistQuery(id);
         var wishlistResponse = await _mediator.Send(exitingWishlist);

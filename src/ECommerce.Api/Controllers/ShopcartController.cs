@@ -39,7 +39,8 @@ public class ShopcartController
                 productId: orderItemModel.ProductId,
                 name: orderItemModel.Name,
                 price: orderItemModel.Price,
-                quantity: orderItemModel.Quantity));
+                quantity: orderItemModel.Quantity,
+                totalPrice: orderItemModel.CalculateTotalOrderPrice()));
         }
 
         var response = new ShopcartResponse(
@@ -67,7 +68,8 @@ public class ShopcartController
                 productId: orderItemModel.ProductId,
                 name: orderItemModel.Name,
                 price: orderItemModel.Price,
-                quantity: orderItemModel.Quantity));
+                quantity: orderItemModel.Quantity,
+                totalPrice: orderItemModel.CalculateTotalOrderPrice()));
         }
 
         var response = new ShopcartResponse(

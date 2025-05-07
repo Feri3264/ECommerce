@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zUufsDpZxdA=",
+  "dgSpecHash": "2iRgyV0Cs14=",
   "success": true,
-  "projectFilePath": "/home/feri/Feri/Drive/Code/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj",
+  "projectFilePath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/feri/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/feri/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

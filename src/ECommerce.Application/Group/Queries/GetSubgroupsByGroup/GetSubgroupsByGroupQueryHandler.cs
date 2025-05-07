@@ -17,6 +17,11 @@ public class GetSubgroupsByGroupQueryHandler
         {
             return GroupError.GroupNotFound;
         }
+
+        if (group.SubgroupIds is null)
+        {
+            return Error.NotFound();
+        }
         
         var subgroups = new List<SubgroupModel>();
         foreach (var item in group.SubgroupIds)

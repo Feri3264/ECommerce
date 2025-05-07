@@ -18,7 +18,7 @@ public class UserModel : BaseModel
     public bool IsDelete { get; private set; }
 
     //navigations
-    public List<Guid>? AddressIds { get; private set; }
+    public readonly List<Guid>? AddressIds = new();
     public Guid? ShopcartId { get; private set; }
     public Guid WishlistId { get; private set; }
 
@@ -31,7 +31,7 @@ public class UserModel : BaseModel
         string _password,
         bool _isAdmin,
         bool _isEditor,
-        bool _isDelete,     
+        bool _isDelete,  
         DateTime _createDate,
         DateTime _modifiedDate,
         Guid? id = null) : base(_createDate , _modifiedDate)
@@ -45,7 +45,7 @@ public class UserModel : BaseModel
         IsEditor = _isEditor;
         IsDelete = _isDelete;
     }
-
+    
 
     //methods
     public ErrorOr<Success> AddAddress(Guid id)

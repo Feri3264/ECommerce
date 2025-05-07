@@ -5,4 +5,5 @@ public record OrderItemResponse
         Guid productId,
         string name,
         int price,
-        int quantity);
+        int quantity,
+        int totalPrice);

@@ -28,7 +28,8 @@ public class SubgroupController
         return getSubgroupResult.Match<IActionResult>(
             subgroup => Ok(new SubgroupResponse
             (id: subgroup.Id,
-                name: subgroup.Name)),
+                name: subgroup.Name,
+                groupId: subgroup.GroupId)),
             Problem);
     }
 

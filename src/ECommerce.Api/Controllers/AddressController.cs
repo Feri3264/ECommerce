@@ -97,16 +97,17 @@ public class AddressController
 
     #region UpdateAddress
 
-    [HttpPut("{addressId:guid}")]
-    public async Task<IActionResult> PutAddress([FromRoute] Guid userId, [FromBody] PutAddressRequest request)
+    [HttpPut("{userId:guid}/{addressId:guid}")]
+    public async Task<IActionResult> PutAddress([FromRoute] Guid userId,[FromRoute] Guid addressId, [FromBody] PutAddressRequest request)
     {
         var command = new UpdateAddressCommand
-            (id: userId,
+            (id: addressId,
                 country: request.Country,
                 city: request.City,
                 street: request.Street,
                 alley: request.Alley,
-                plate : request.Plate);
+                plate : request.Plate,
+                userId: userId);
         
         var updateAddressResult = await _mediator.Send(command);
 
@@ -115,7 +116,8 @@ public class AddressController
             Problem);
     }
 
-    public async Task<IActionResult> PatchAddress(Guid addressId, [FromBody] JsonPatchDocument<PatchAddressRequestDTO> patchDocument)
+    [HttpPatch("{userId:guid}/{addressId:guid}")]
+    public async Task<IActionResult> PatchAddress([FromRoute] Guid userId, [FromRoute]Guid addressId, [FromBody] JsonPatchDocument<PatchAddressRequestDTO> patchDocument)
     {
         var getAddressCmd = new GetAddressQuery(addressId);
         var getAddressResult = await _mediator.Send(getAddressCmd);
@@ -125,7 +127,8 @@ public class AddressController
             City: getAddressResult.Value.City,
             Street: getAddressResult.Value.Street,
             Alley: getAddressResult.Value.Alley,
-            Plate: getAddressResult.Value.Plate);
+            Plate: getAddressResult.Value.Plate,
+            UserId: getAddressResult.Value.UserId);
         
         patchDocument.ApplyTo(addressToPatch , ModelState);
 
@@ -135,7 +138,8 @@ public class AddressController
             city: addressToPatch.City,
             street: addressToPatch.Street,
             alley: addressToPatch.Alley,
-            plate : addressToPatch.Plate);
+            plate : addressToPatch.Plate,
+            userId: addressToPatch.UserId);
         var response = await _mediator.Send(command);
         
         return response.Match(_ => NoContent(), Problem);

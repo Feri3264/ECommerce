@@ -97,7 +97,7 @@ public class UserController
     #region GetUser
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetUser([FromQuery] Guid id)
+    public async Task<IActionResult> GetUser([FromRoute] Guid id)
     {
         var command = new GetUserQuery(id);
         var getUserResult = await _mediator.Send(command);
@@ -143,7 +143,7 @@ public class UserController
     }
     
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetUserForEdit([FromQuery] Guid id)
+    public async Task<IActionResult> GetUserForEdit([FromRoute] Guid id)
     {
         var command = new GetUserQuery(id);
         var response = await _mediator.Send(command);
@@ -178,7 +178,16 @@ public class UserController
             _ => NoContent(),
             Problem);
     }
-
+    //Json Patch Format
+    /*
+        [
+             {
+               "op": "replace",
+               "path": "/username",
+               "value": "farid1010"
+             }
+        ]
+     */
     [HttpPatch("{userId:guid}")]
     public async Task<IActionResult> PatchUser([FromRoute] Guid userId , [FromBody] JsonPatchDocument<PatchUpdateUserRequestDTO> patchDocument)
     {
@@ -219,7 +228,7 @@ public class UserController
     #region DeleteUser
 
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteUser([FromQuery] Guid id)
+    public async Task<IActionResult> DeleteUser([FromRoute] Guid id)
     {
         var command = new DeleteUserCommand(id);
         var deleteUserResult = await _mediator.Send(command);

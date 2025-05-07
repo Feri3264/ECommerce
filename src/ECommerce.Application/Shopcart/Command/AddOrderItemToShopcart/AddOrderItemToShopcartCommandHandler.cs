@@ -26,6 +26,7 @@ public class AddOrderItemToShopcartCommandHandler
         {
             orderItem.AddQuantity();
             shopcart.CalculateTotalPrice(orderItem.Price);
+            orderItem.CalculateTotalOrderPrice();
             _shopcartRepository.Update(shopcart);
             _orderItemRepository.Update(orderItem);
             await _orderItemRepository.SaveChangesAsync();

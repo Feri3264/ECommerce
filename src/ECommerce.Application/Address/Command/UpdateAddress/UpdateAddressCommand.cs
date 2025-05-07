@@ -9,4 +9,5 @@ public record UpdateAddressCommand
         string? city,
         string? street,
         string? alley,
-        string? plate) : IRequest<ErrorOr<Success>>;
+        string? plate,
+        Guid? userId) : IRequest<ErrorOr<Success>>;

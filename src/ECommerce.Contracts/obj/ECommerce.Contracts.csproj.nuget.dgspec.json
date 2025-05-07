@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {}
+    "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {}
   },
   "projects": {
-    "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {
+    "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj",
+        "projectUniqueName": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj",
         "projectName": "ECommerce.Contracts",
-        "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj",
+        "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj",
         "packagesPath": "/home/feri/.nuget/packages/",
-        "outputPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/obj/",
+        "outputPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/feri/.nuget/NuGet/NuGet.Config"

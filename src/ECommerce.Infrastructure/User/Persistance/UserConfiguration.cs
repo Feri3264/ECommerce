@@ -2,6 +2,7 @@ using ECommerce.Domain.Address;
 using ECommerce.Domain.Shopcart;
 using ECommerce.Domain.User;
 using ECommerce.Domain.Wishlist;
+using ECommerce.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -23,6 +24,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<UserModel>
         builder.Property(u => u.IsAdmin).IsRequired();
         builder.Property(u => u.IsEditor).IsRequired();
         builder.Property(u => u.IsDelete).IsRequired();
+        builder.Property(u => u.AddressIds).HasListOfIdsConverter();
         
         builder.Property(u => u.WishlistId)
             .HasColumnType("uniqueidentifier").IsRequired();

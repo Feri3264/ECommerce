@@ -1,4 +1,5 @@
 using ECommerce.Domain.Group;
+using ECommerce.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,6 +16,7 @@ internal class GroupConfiguration : IEntityTypeConfiguration<GroupModel>
         
         builder.Property(g => g.Name).HasMaxLength(100).IsRequired();
         builder.Property(g => g.IsDelete).IsRequired();
+        builder.Property(g => g.SubgroupIds).HasListOfIdsConverter();
         
         
         //seed data

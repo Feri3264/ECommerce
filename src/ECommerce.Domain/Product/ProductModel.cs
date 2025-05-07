@@ -15,8 +15,9 @@ public class ProductModel : BaseModel
     public bool IsDelete {get; private set;}
 
     //navigation
-    public List<Guid>? ShopcartProductId { get; private set; }
-    public List<Guid>? WishlistProductId { get; private set; }
+    public List<Guid>? ShopcartProductId = new();
+    
+    public List<Guid>? WishlistProductId = new();
     public Guid SubgroupId { get; private set; }
 
 

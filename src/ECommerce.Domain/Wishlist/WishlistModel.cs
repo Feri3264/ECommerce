@@ -10,7 +10,7 @@ public class WishlistModel : BaseModel
     public bool IsDelete { get; private set; }
     
     //navigations
-    public List<Guid>? WishlistProductId { get; private set; }
+    public List<Guid>? WishlistProductId = new();
     public Guid UserId { get; private set; }
 
     //ctor

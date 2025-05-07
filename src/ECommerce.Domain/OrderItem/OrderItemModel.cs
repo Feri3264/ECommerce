@@ -10,7 +10,8 @@ public class OrderItemModel : BaseModel
     public string Name { get; private set; }
     public int Price { get; private set; }
     public int Quantity { get; private set; }
-    public int TotalOrderPrice => Price * Quantity; 
+
+    public int TotalOrderPrice { get; private set; }
 
     //navigation
     public Guid ProductId { get; private set; }
@@ -32,9 +33,15 @@ public class OrderItemModel : BaseModel
         Name = _name;
         Price = _price;
         Quantity = _quantity;
+        TotalOrderPrice = _price;
     }
 
     //methods
+    public int CalculateTotalOrderPrice()
+    {
+        TotalOrderPrice = Price * Quantity;
+        return TotalOrderPrice;
+    }
     public ErrorOr<Success> AddQuantity()
     {
         Quantity++;

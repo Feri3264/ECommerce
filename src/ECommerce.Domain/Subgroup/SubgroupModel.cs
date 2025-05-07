@@ -12,19 +12,20 @@ public class SubgroupModel : BaseModel
 
     //navigation
     public Guid GroupId { get; private set; }
-    public List<Guid>? ProductIds { get; private set; }
+    public List<Guid>? ProductIds = new();
 
     //ctor
     public SubgroupModel(string _name,
+        Guid _groupId,
         DateTime _createDate,
         DateTime _modifiedDate,
-        Guid? id = null ,
-        Guid? _groupId = null) : base(_createDate , _modifiedDate)
+        Guid? id = null) : base(_createDate , _modifiedDate)
     {
         Id = id ?? Guid.NewGuid();
         Name = _name;
+        GroupId = _groupId;
     }
-
+    
     //methods
     public void ChangeName(string name)
     {

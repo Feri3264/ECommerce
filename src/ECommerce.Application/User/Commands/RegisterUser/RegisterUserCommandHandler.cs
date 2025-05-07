@@ -2,13 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using ECommerce.Application.Common;
 using ECommerce.Application.Common.Interfaces.Repositories;
 using ECommerce.Domain.User;
+using ECommerce.Domain.Wishlist;
 using ErrorOr;
 using MediatR;
 
 namespace ECommerce.Application.User.Commands.RegisterUser;
 
 public class RegisterUserCommandHandler
-    (IUserRepository _userRepository) : IRequestHandler<RegisterUserCommand , ErrorOr<UserModel>>
+    (IUserRepository _userRepository,
+        IWishlistRepository _wishlistRepository) : IRequestHandler<RegisterUserCommand , ErrorOr<UserModel>>
 {
     public async Task<ErrorOr<UserModel>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
@@ -18,7 +20,7 @@ public class RegisterUserCommandHandler
         }
 
         var verifyEmail = new EmailAddressAttribute();
-        if (verifyEmail.IsValid(request.email))
+        if (!verifyEmail.IsValid(request.email))
         {
             return UserError.EmailNotValid;
         }
@@ -34,6 +36,7 @@ public class RegisterUserCommandHandler
             return verifyPassword.Errors;
         }
         
+        
         var newUser = new UserModel(
             _name: request.name,
             _email: request.email,
@@ -44,7 +47,14 @@ public class RegisterUserCommandHandler
             _isDelete: false,
             _createDate: DateTime.Now, 
             _modifiedDate: DateTime.Now);
-        
+
+        var newWishlist = new WishlistModel(
+            _userId: newUser.Id,
+            _createDate: DateTime.Now, 
+            _modifiedDate: DateTime.Now);
+        newUser.ChangeWishlistId(newWishlist.Id);
+
+        await _wishlistRepository.AddAsync(newWishlist);
         await _userRepository.AddAsync(newUser);
         await _userRepository.SaveChangesAsync();
         return newUser;

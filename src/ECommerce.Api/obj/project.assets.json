@@ -5252,11 +5252,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/feri/Feri/Drive/Code/src/ECommerce.Api/ECommerce.Api.csproj",
+      "projectUniqueName": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Api/ECommerce.Api.csproj",
       "projectName": "ECommerce.Api",
-      "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Api/ECommerce.Api.csproj",
+      "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Api/ECommerce.Api.csproj",
       "packagesPath": "/home/feri/.nuget/packages/",
-      "outputPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Api/obj/",
+      "outputPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/feri/.nuget/NuGet/NuGet.Config"
@@ -5271,14 +5271,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj": {
-              "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Application/ECommerce.Application.csproj"
+            "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj": {
+              "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Application/ECommerce.Application.csproj"
             },
-            "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {
-              "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Contracts/ECommerce.Contracts.csproj"
+            "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj": {
+              "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Contracts/ECommerce.Contracts.csproj"
             },
-            "/home/feri/Feri/Drive/Code/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj": {
-              "projectPath": "/home/feri/Feri/Drive/Code/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj"
+            "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj": {
+              "projectPath": "/home/feri/Feri/Drive/Code/ECommerce/src/ECommerce.Infrastructure/ECommerce.Infrastructure.csproj"
             }
           }
         }

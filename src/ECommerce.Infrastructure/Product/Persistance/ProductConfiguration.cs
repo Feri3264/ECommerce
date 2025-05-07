@@ -4,6 +4,7 @@ using ECommerce.Domain.Shopcart;
 using ECommerce.Domain.ShopcartProductMapper;
 using ECommerce.Domain.Subgroup;
 using ECommerce.Domain.WishlistProductMapper;
+using ECommerce.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -24,6 +25,8 @@ internal class ProductConfiguration : IEntityTypeConfiguration<ProductModel>
         builder.Property(p => p.FullDesc).IsRequired();
         builder.Property(p => p.AllowUserComments).IsRequired();
         builder.Property(p => p.IsDelete).IsRequired();
+        builder.Property(p => p.WishlistProductId).HasListOfIdsConverter();
+        builder.Property(p => p.ShopcartProductId).HasListOfIdsConverter();
         
         builder.Property(p => p.SubgroupId)
             .HasColumnType("uniqueidentifier").IsRequired();
