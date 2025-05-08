@@ -5,10 +5,12 @@ using ECommerce.Application.Wishlist.Queries.GetWishlist;
 using ECommerce.Contracts.Product;
 using ECommerce.Contracts.Wishlist;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class WishlistController
     (IMediator _mediator): ApiController

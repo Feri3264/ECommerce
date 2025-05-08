@@ -1,3 +1,4 @@
+using ECommerce.Application.Common.Auth;
 using ECommerce.Application.User.Commands.ChangePassword;
 using ECommerce.Application.User.Commands.DeleteUser;
 using ECommerce.Application.User.Commands.LoginUser;
@@ -9,17 +10,20 @@ using ECommerce.Contracts.User;
 using ECommerce.Domain.User;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class UserController
-    (IMediator _mediator) : ApiController
+    (IMediator _mediator,
+        IJwtGenerator _jwtGenerator) : ApiController
 {
     
     #region LoginUser
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequestDTO request)
     {
@@ -44,7 +48,7 @@ public class UserController
     #endregion
 
     #region RegisterUser
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> RegisterUser([FromBody] RegisterUserRequestDTO request)
     {
@@ -57,10 +61,16 @@ public class UserController
                 isEditor : request.isEditor);
         var response = await _mediator.Send(command);
 
+        var token = _jwtGenerator.GenerateJwtToken(response.Value.Id ,
+            response.Value.Email ,
+            response.Value.Password ,
+            response.Value.IsAdmin ,
+            response.Value.IsEditor);
+        
         return response.Match(
             user => CreatedAtAction(nameof(LoginUser),
                 new LoginUserRequestDTO(emailOrUsername: user.Email , password:user.Password) ,
-                new UserResponse(
+                new RegisterUserResponse(
                 userId: user.Id,
                 name: user.Name,
                 email: user.Email,
@@ -68,7 +78,7 @@ public class UserController
                 password: user.Password,
                 isAdmin: user.IsAdmin,
                 isEditor: user.IsEditor,
-                isDelete: user.IsDelete,
+                JwtToken: token,
                 modifiedDate: user.ModifiedDate,
                 createDate: user.CreateDate)),
             Problem);
@@ -79,7 +89,7 @@ public class UserController
     #region ChangePassword
 
     [HttpPost("{userId:guid}")]
-    public async Task<IActionResult> ChangePassword([FromQuery] Guid userId,
+    public async Task<IActionResult> ChangePassword([FromRoute] Guid userId,
         [FromBody] ChangePasswordRequestDTO request)
     {
         var command = new ChangePasswordCommand(
@@ -118,6 +128,7 @@ public class UserController
     }
     
     [HttpGet]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> GetUsers()
     {
         var command = new GetUsersQuery();
@@ -159,7 +170,7 @@ public class UserController
     #endregion
 
     #region UpdateUser
-
+    
     [HttpPut("{userId:guid}")]
     public async Task<IActionResult> PutUser([FromRoute] Guid userId ,[FromBody] UpdateUserRequestDTO request)
     {

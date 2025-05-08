@@ -10,10 +10,12 @@ using ECommerce.Application.Group.Queries.GetSubgroupsByGroup;
 using ECommerce.Contracts.Group;
 using ECommerce.Contracts.Subgroup;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize(Roles = "admin")]
 [Route("api/[controller]/[action]")]
 public class GroupController
     (IMediator _mediator) : ApiController
@@ -21,6 +23,7 @@ public class GroupController
     
     #region GetGroup
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetGroup([FromQuery] Guid id)
     {
@@ -50,6 +53,7 @@ public class GroupController
         return Ok(response);
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetGroups()
     {
@@ -85,7 +89,7 @@ public class GroupController
     #endregion
 
     #region CreateGroup
-
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public async Task<IActionResult> CreateGroup([FromBody] CreateGroupRequest request)
     {
@@ -102,7 +106,7 @@ public class GroupController
     #endregion
 
     #region ChangeGroupName
-    
+    [Authorize(Roles = "admin")]
     [HttpPatch("{groupId:guid}/{name}")]
     public async Task<IActionResult> ChangeGroupName([FromRoute] Guid groupId, [FromRoute] string name)
     {
@@ -117,7 +121,7 @@ public class GroupController
     #endregion
 
     #region DeleteGroup
-    
+    [Authorize(Roles = "admin")]
     [HttpDelete]
     public async Task<IActionResult> DeleteGroup([FromQuery] Guid id)
     {
@@ -132,7 +136,7 @@ public class GroupController
     #endregion
 
     #region SubgroupActions
-
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public async Task<IActionResult> AddSubgroupToGroup([FromBody] AddSubgroupToGroupRequest request)
     {
@@ -143,7 +147,8 @@ public class GroupController
             _ => NoContent(),
             Problem);
     }
-
+    
+    [Authorize(Roles = "admin")]
     [HttpDelete("{groupId}/{subgroupId}")]
     public async Task<IActionResult> DeleteSubgroupFromGroup([FromRoute] Guid groupId , [FromRoute] Guid subgroupId)
     {

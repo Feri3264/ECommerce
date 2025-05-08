@@ -8,17 +8,19 @@ using ECommerce.Application.Subgroup.Queries.GetSubgroup;
 using ECommerce.Contracts.Product;
 using ECommerce.Contracts.Subgroup;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize(Roles = "admin")]
 [Route("api/[controller]/[action]")]
 public class SubgroupController
     (IMediator _mediator) : ApiController
 {
 
     #region GetSubgroup
-
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetSubgroup([FromQuery] Guid id)
     {
@@ -33,6 +35,7 @@ public class SubgroupController
             Problem);
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> GetProductBySubgroup([FromQuery] Guid id)
     {
@@ -111,6 +114,7 @@ public class SubgroupController
 
     #region ProductActions
 
+    [Authorize(Roles = "editor")]
     [HttpPost]
     public async Task<IActionResult> AddProductToSubgroup([FromBody]AddProductToSubgroupRequest request)
     {
@@ -122,6 +126,7 @@ public class SubgroupController
             Problem);
     }
     
+    [Authorize(Roles = "editor")]
     [HttpDelete("{productId}/{subgroupId}")]
     public async Task<IActionResult> DeleteProductFromSubgroup([FromRoute] Guid productId , [FromRoute] Guid subgroupId)
     {

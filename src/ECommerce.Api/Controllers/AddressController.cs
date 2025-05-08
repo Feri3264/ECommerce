@@ -10,17 +10,19 @@ using ECommerce.Contracts.Address;
 using ECommerce.Domain.Address;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class AddressController
     (IMediator _mediator) : ApiController
 {
     #region GetAddress
-
+    
     [HttpGet("{userId}/{addressId}")]
     public async Task<IActionResult> GetAddressByUser([FromRoute] Guid userId, [FromRoute] Guid addressId)
     {
@@ -66,7 +68,7 @@ public class AddressController
     #endregion
 
     #region CreateAddress
-
+    
     [HttpPost]
     public async Task<IActionResult> CreateAddress([FromBody] CreateAddressRequest request)
     {

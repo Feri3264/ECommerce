@@ -40,6 +40,7 @@ public static class DependencyInjection
         
         //Services
         services.AddScoped<IPasswordService, PasswordService>();
+        services.AddScoped<IJwtGenerator, JwtGenerator>();
         
         return services;
     }

@@ -11,10 +11,12 @@ using ECommerce.Application.Shopcart.Queries.GetShopcartsByUser;
 using ECommerce.Contracts.OrderItem;
 using ECommerce.Contracts.Shopcart;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class ShopcartController
     (IMediator _mediator) : ApiController

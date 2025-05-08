@@ -7,6 +7,7 @@ using ECommerce.Contracts.Product;
 using ECommerce.Contracts.Subgroup;
 using ECommerce.Domain.Product;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,7 +52,9 @@ public class ProductController
     #endregion
 
     #region CreateProduct
-
+    
+    [Authorize(Roles = "admin"),
+     Authorize(Roles = "editor")]
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequestDTO requestDto)
     {
@@ -82,6 +85,8 @@ public class ProductController
 
     #region UpdateProduct
 
+    [Authorize(Roles = "admin"),
+     Authorize(Roles = "editor")]
     [HttpPut("{productId:guid}")]
     public async Task<IActionResult> PutProduct([FromRoute] Guid productId ,[FromBody] UpdateProductRequestDTO requestDto)
     {
@@ -137,6 +142,8 @@ public class ProductController
 
     #region DeleteProduct
 
+    [Authorize(Roles = "admin"),
+     Authorize(Roles = "editor")]
     [HttpDelete]
     public async Task<IActionResult> DeleteProduct([FromQuery] Guid id)
     {
