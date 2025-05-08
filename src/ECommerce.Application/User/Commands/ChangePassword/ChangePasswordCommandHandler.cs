@@ -1,4 +1,5 @@
 using ECommerce.Application.Common;
+using ECommerce.Application.Common.Auth;
 using ECommerce.Application.Common.Interfaces.Repositories;
 using ECommerce.Domain.User;
 using ErrorOr;
@@ -7,7 +8,8 @@ using MediatR;
 namespace ECommerce.Application.User.Commands.ChangePassword;
 
 public class ChangePasswordCommandHandler
-    (IUserRepository _userRepository) : IRequestHandler<ChangePasswordCommand , ErrorOr<Success>>
+    (IUserRepository _userRepository,
+        IPasswordService _passwordService) : IRequestHandler<ChangePasswordCommand , ErrorOr<Success>>
 {
     public async Task<ErrorOr<Success>> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
     {
@@ -27,7 +29,7 @@ public class ChangePasswordCommandHandler
             return UserError.IncorrectPassword;
         }
 
-        var verifyPassword = PasswordService.VlaidatePassword(request.newPassword);
+        var verifyPassword = _passwordService.VlaidatePassword(request.newPassword);
         if (verifyPassword.IsError)
         {
             return verifyPassword.Errors;

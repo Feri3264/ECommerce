@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using ECommerce.Application.Common;
+using ECommerce.Application.Common.Auth;
 using ECommerce.Application.Common.Interfaces.Repositories;
 using ECommerce.Domain.User;
 using ECommerce.Domain.Wishlist;
@@ -10,7 +11,8 @@ namespace ECommerce.Application.User.Commands.RegisterUser;
 
 public class RegisterUserCommandHandler
     (IUserRepository _userRepository,
-        IWishlistRepository _wishlistRepository) : IRequestHandler<RegisterUserCommand , ErrorOr<UserModel>>
+        IWishlistRepository _wishlistRepository,
+        IPasswordService _passwordService) : IRequestHandler<RegisterUserCommand , ErrorOr<UserModel>>
 {
     public async Task<ErrorOr<UserModel>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
@@ -30,7 +32,7 @@ public class RegisterUserCommandHandler
             return UserError.EmailAlreadyExists;
         }
 
-        var verifyPassword = PasswordService.VlaidatePassword(request.password);
+        var verifyPassword = _passwordService.VlaidatePassword(request.password);
         if (verifyPassword.IsError)
         {
             return verifyPassword.Errors;

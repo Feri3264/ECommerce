@@ -1,5 +1,7 @@
+using ECommerce.Application.Common.Auth;
 using ECommerce.Application.Common.Interfaces.Repositories;
 using ECommerce.Infrastructure.Address.Persistance;
+using ECommerce.Infrastructure.Common.Auth;
 using ECommerce.Infrastructure.Common.Persistence;
 using ECommerce.Infrastructure.Group.Persistance;
 using ECommerce.Infrastructure.OrderItem.Persistance;
@@ -35,6 +37,9 @@ public static class DependencyInjection
         services.AddScoped<IWishlistRepository, WishlistRepository>();
         services.AddScoped<IWishlistProductMapperReository, WishlistProductMapperRepository>();
         services.AddScoped<IShopcartProductMapperRepository, ShopcartProductMapperRepository>();
+        
+        //Services
+        services.AddScoped<IPasswordService, PasswordService>();
         
         return services;
     }

@@ -1,15 +1,16 @@
+using ECommerce.Application.Common.Auth;
 using ErrorOr;
 
-namespace ECommerce.Application.Common;
+namespace ECommerce.Infrastructure.Common.Auth;
 
-public static class PasswordService
+public class PasswordService : IPasswordService
 {
-    public static string HashPassword(string password)
+    public string HashPassword(string password)
     {
         return "";
     }
 
-    public static ErrorOr<Success> VlaidatePassword(string password)
+    public ErrorOr<Success> VlaidatePassword(string password)
     {
         if (password.Length <= 8)
         {
@@ -31,12 +32,12 @@ public static class PasswordService
 
     #region tools
 
-    private static bool IsLetter(char c)
+    private bool IsLetter(char c)
     {
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
-    private static bool IsDeigit(char c)
+    private bool IsDeigit(char c)
     {
         return (c >= '0' && c <= '9');
     }
