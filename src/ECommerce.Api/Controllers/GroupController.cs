@@ -30,7 +30,7 @@ public class GroupController
         var exitingGroup = new GetGroupQuery(id);
         var groupResult = await _mediator.Send(exitingGroup);
 
-        var exitingSubgroups = new GetSubgroupsByGroupQuery(id);
+        var exitingSubgroups = new GetSubgroupsByGroupQuery(id , false , "createDate");
         var subgroupsModels = await _mediator.Send(exitingSubgroups);
 
         List<SubgroupResponse> subgroups = new List<SubgroupResponse>();
@@ -55,9 +55,9 @@ public class GroupController
 
     [AllowAnonymous]
     [HttpGet]
-    public async Task<IActionResult> GetGroups()
+    public async Task<IActionResult> GetGroups([FromQuery] string? sort , [FromQuery] bool descending = false)
     {
-        var command = new GetGroupsQuery();
+        var command = new GetGroupsQuery(descending , sort);
         var getGroupsResult = await _mediator.Send(command);
         
         List<GroupResponse> groups = new List<GroupResponse>();
@@ -70,9 +70,9 @@ public class GroupController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetSubgroupsByGroup([FromQuery] Guid groupId)
+    public async Task<IActionResult> GetSubgroupsByGroup([FromQuery] Guid groupId , [FromQuery] string? sort , bool descending = false)
     {
-        var command = new GetSubgroupsByGroupQuery(groupId);
+        var command = new GetSubgroupsByGroupQuery(groupId , descending , sort);
         var getSubgroupsResult = await _mediator.Send(command);
         
         List<SubgroupResponse> subgroups = new List<SubgroupResponse>();

@@ -53,10 +53,10 @@ public class WishlistController
 
     #region ProductActions
 
-    [HttpPost]
-    public async Task<IActionResult> AddProductToWishlist([FromBody] AddProductToWishlistRequest request)
+    [HttpPost("{wishlistId:guid}/{productId:guid}")]
+    public async Task<IActionResult> AddProductToWishlist([FromRoute] Guid wishlistId , [FromRoute] Guid productId)
     {
-        var command = new AddProductToWishlistCommand(request.wishlistId, request.productId);
+        var command = new AddProductToWishlistCommand(wishlistId, productId);
         var addProductResult = await _mediator.Send(command);
 
         return addProductResult.Match<IActionResult>(

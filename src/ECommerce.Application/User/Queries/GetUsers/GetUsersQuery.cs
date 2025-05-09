@@ -5,4 +5,4 @@ using MediatR;
 namespace ECommerce.Application.User.Queries.GetUsers;
 
 public record GetUsersQuery
-() : IRequest<IEnumerable<UserModel>>;
+( bool descending , string sort = "createDate") : IRequest<IEnumerable<UserModel>>;

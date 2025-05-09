@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using ECommerce.Application.Common.Auth;
 using ECommerce.Application.User.Commands.ChangePassword;
 using ECommerce.Application.User.Commands.DeleteUser;
@@ -129,9 +130,9 @@ public class UserController
     
     [HttpGet]
     [Authorize(Roles = "admin")]
-    public async Task<IActionResult> GetUsers()
+    public async Task<IActionResult> GetUsers([FromQuery] string? sort , [FromQuery] bool descending = false)
     {
-        var command = new GetUsersQuery();
+        var command = new GetUsersQuery( descending , sort);
         var getUsersResult = await _mediator.Send(command);
         
         List<UserResponse> users = new List<UserResponse>();

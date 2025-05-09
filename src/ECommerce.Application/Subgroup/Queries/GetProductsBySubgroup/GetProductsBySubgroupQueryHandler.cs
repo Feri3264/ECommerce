@@ -25,6 +25,25 @@ IProductRepository _productRepository) : IRequestHandler<GetProductsBySubgroupQu
             products.Add(await _productRepository.GetByIdAsync(item));
         }
 
+        switch (request.sort)
+        {
+            case "createDate":
+                products = products.OrderBy(p => p.CreateDate).ToList();
+                break;
+            case "price" :
+                products = products.OrderBy(p => p.Price).ToList();
+                break;
+            case "name":
+                products = products.OrderBy(p => p.Name).ToList();
+                break;
+            default:
+                products = products.OrderBy(p => p.CreateDate).ToList();
+                break;
+        }
+
+        if (request.descending)
+            products.Reverse();
+
         return products;
     }
 }

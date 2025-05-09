@@ -5,4 +5,4 @@ using MediatR;
 namespace ECommerce.Application.Group.Queries.GetGroups;
 
 public record GetGroupsQuery
-() : IRequest<IEnumerable<GroupModel>>;
+(bool descending, string sort = "createDate") : IRequest<IEnumerable<GroupModel>>;

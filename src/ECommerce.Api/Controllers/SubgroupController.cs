@@ -37,9 +37,11 @@ public class SubgroupController
 
     [AllowAnonymous]
     [HttpGet]
-    public async Task<IActionResult> GetProductBySubgroup([FromQuery] Guid id)
+    public async Task<IActionResult> GetProductBySubgroup([FromQuery] Guid id,
+        [FromQuery] string? sort,
+        [FromQuery] bool descending = false)
     {
-        var command = new GetProductsBySubgroupQuery(id);
+        var command = new GetProductsBySubgroupQuery(id , descending , sort);
         var getProductResult = await _mediator.Send(command);
         
         List<ProductResponse> products = new List<ProductResponse>();
@@ -115,10 +117,10 @@ public class SubgroupController
     #region ProductActions
 
     [Authorize(Roles = "editor")]
-    [HttpPost]
-    public async Task<IActionResult> AddProductToSubgroup([FromBody]AddProductToSubgroupRequest request)
+    [HttpPost("{subgroupId:guid}/{productId:guid}")]
+    public async Task<IActionResult> AddProductToSubgroup([FromRoute] Guid subgroupId , [FromRoute] Guid productId)
     {
-        var command = new AddProductToSubgroupCommand(request.subgroupId, request.productId);
+        var command = new AddProductToSubgroupCommand(subgroupId, productId);
         var addProductResult = await _mediator.Send(command);
 
         return addProductResult.Match<IActionResult>(

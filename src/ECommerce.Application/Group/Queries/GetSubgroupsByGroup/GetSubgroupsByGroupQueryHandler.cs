@@ -29,6 +29,19 @@ public class GetSubgroupsByGroupQueryHandler
             subgroups.Add(await _subgroupRepository.GetByIdAsync(item));
         }
 
+        switch (request.sort)
+        {
+            case "createDate" :
+                subgroups = subgroups.OrderBy(subgroup => subgroup.CreateDate).ToList();
+                break;
+            case "name" :
+                subgroups = subgroups.OrderBy(subgroup => subgroup.Name).ToList();
+                break;
+        }
+
+        if (request.descending)
+            subgroups.Reverse();
+
         return subgroups;
     }
 }

@@ -12,6 +12,20 @@ public class GetGroupsQueryHandler
     public async Task<IEnumerable<GroupModel>> Handle(GetGroupsQuery request, CancellationToken cancellationToken)
     {
         var groups = await _groupRepository.GetGroupsAync();
+
+        switch (request.sort)
+        {
+            case "createDate":
+                groups = groups.OrderBy(g => g.CreateDate).ToList();
+                break;
+            case "name":
+                groups = groups.OrderBy(g => g.Name).ToList();
+                break;
+        }
+
+        if (request.descending)
+            groups.Reverse();
+        
         return groups;
     }
 }

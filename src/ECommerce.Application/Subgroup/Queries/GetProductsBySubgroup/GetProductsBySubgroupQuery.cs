@@ -5,4 +5,6 @@ using MediatR;
 namespace ECommerce.Application.Subgroup.Queries.GetProductsBySubgroup;
 
 public record GetProductsBySubgroupQuery
-(Guid subgroupId) : IRequest<ErrorOr<IEnumerable<ProductModel>>>;
+(Guid subgroupId,
+    bool descending,
+    string? sort = "createDate") : IRequest<ErrorOr<IEnumerable<ProductModel>>>;
