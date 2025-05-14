@@ -8,11 +8,11 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 
 namespace ECommerce.Infrastructure.Common.Auth;
 
-public class JwtGenerator
-    (IConfiguration _configuration) : IJwtGenerator
+public class JwtTokenService
+    (IConfiguration _configuration) : IJwtTokenService
 {
     private string TokenKey = _configuration["Jwt:Key"];
-    private static TimeSpan TokenExpiry = TimeSpan.FromDays(1);
+    private static TimeSpan TokenExpiry = TimeSpan.FromHours(1);
     
     public string GenerateJwtToken(Guid userId, string email, string password , bool isAdmin = false, bool isEditor = false)
     {

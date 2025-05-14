@@ -96,9 +96,9 @@ namespace ECommerce.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("2a308c81-0485-49a2-8822-a8d61a981093"),
-                            CreateDate = new DateTime(2025, 5, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreateDate = new DateTime(2025, 5, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             IsDelete = false,
-                            ModifiedDate = new DateTime(2025, 5, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ModifiedDate = new DateTime(2025, 5, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "uncategorized",
                             SubgroupIds = ""
                         });
@@ -192,6 +192,35 @@ namespace ECommerce.Infrastructure.Migrations
                     b.HasIndex("SubgroupId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ECommerce.Domain.RefreshToken.RefreshTokenModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpireTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("RefreshToken");
                 });
 
             modelBuilder.Entity("ECommerce.Domain.Shopcart.ShopcartModel", b =>
@@ -293,10 +322,10 @@ namespace ECommerce.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("d859e766-fb34-4914-9c8d-27b02c40ffd4"),
-                            CreateDate = new DateTime(2025, 5, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreateDate = new DateTime(2025, 5, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             GroupId = new Guid("2a308c81-0485-49a2-8822-a8d61a981093"),
                             IsDelete = false,
-                            ModifiedDate = new DateTime(2025, 5, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ModifiedDate = new DateTime(2025, 5, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             Name = "uncategorized",
                             ProductIds = ""
                         });
@@ -339,6 +368,9 @@ namespace ECommerce.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("ShopcartId")
                         .HasColumnType("uniqueidentifier");
@@ -439,6 +471,15 @@ namespace ECommerce.Infrastructure.Migrations
                     b.HasOne("ECommerce.Domain.Subgroup.SubgroupModel", null)
                         .WithMany()
                         .HasForeignKey("SubgroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ECommerce.Domain.RefreshToken.RefreshTokenModel", b =>
+                {
+                    b.HasOne("ECommerce.Domain.User.UserModel", null)
+                        .WithOne()
+                        .HasForeignKey("ECommerce.Domain.RefreshToken.RefreshTokenModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

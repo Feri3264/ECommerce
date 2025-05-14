@@ -3,6 +3,7 @@ using ECommerce.Domain.Address;
 using ECommerce.Domain.Group;
 using ECommerce.Domain.OrderItem;
 using ECommerce.Domain.Product;
+using ECommerce.Domain.RefreshToken;
 using ECommerce.Domain.Shopcart;
 using ECommerce.Domain.ShopcartProductMapper;
 using ECommerce.Domain.Subgroup;
@@ -26,6 +27,7 @@ public class ECommerceDbContext
     public DbSet<WishlistProductMapperModel> WishlistProductMappers { get; set; }
     public DbSet<GroupModel> Groups { get; set; }
     public DbSet<AddressModel> Addresses { get; set; }
+    public DbSet<RefreshTokenModel> RefreshToken { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

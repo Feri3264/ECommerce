@@ -6,6 +6,7 @@ public record UserResponse
         string email,
         string username,
         string password,
+        string refreshToken,
         bool isAdmin,
         bool isEditor,
         bool isDelete,

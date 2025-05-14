@@ -6,6 +6,7 @@ using ECommerce.Infrastructure.Common.Persistence;
 using ECommerce.Infrastructure.Group.Persistance;
 using ECommerce.Infrastructure.OrderItem.Persistance;
 using ECommerce.Infrastructure.Product.Persistance;
+using ECommerce.Infrastructure.RefreshToken.Persistence;
 using ECommerce.Infrastructure.Shopcart.Persistance;
 using ECommerce.Infrastructure.ShopcartProductMapper.Persistence;
 using ECommerce.Infrastructure.Subgroup.Persistance;
@@ -37,10 +38,12 @@ public static class DependencyInjection
         services.AddScoped<IWishlistRepository, WishlistRepository>();
         services.AddScoped<IWishlistProductMapperReository, WishlistProductMapperRepository>();
         services.AddScoped<IShopcartProductMapperRepository, ShopcartProductMapperRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         
         //Services
         services.AddScoped<IPasswordService, PasswordService>();
-        services.AddScoped<IJwtGenerator, JwtGenerator>();
+        services.AddScoped<IJwtTokenService, JwtTokenService>();
+        services.AddScoped<IRefreshTokenService, RefreshTokenService>();
         
         return services;
     }

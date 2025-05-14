@@ -1,5 +1,6 @@
 using System.Security.AccessControl;
 using ECommerce.Application.Common.Auth;
+using ECommerce.Application.RefreshToken.Command.GenerateRefreshToken;
 using ECommerce.Application.User.Commands.ChangePassword;
 using ECommerce.Application.User.Commands.DeleteUser;
 using ECommerce.Application.User.Commands.LoginUser;
@@ -20,7 +21,7 @@ namespace ECommerce.Api.Controllers;
 [Route("api/[controller]/[action]")]
 public class UserController
     (IMediator _mediator,
-        IJwtGenerator _jwtGenerator) : ApiController
+        IJwtTokenService jwtTokenService) : ApiController
 {
     
     #region LoginUser
@@ -29,15 +30,26 @@ public class UserController
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequestDTO request)
     {
         var command = new LoginUserCommand(request.emailOrUsername , request.password);
-        var response = await _mediator.Send(command);
+        var user = await _mediator.Send(command);
         
-        return response.Match(
-            user => Ok(new UserResponse(
+        var token = jwtTokenService.GenerateJwtToken(user.Value.Id ,
+            user.Value.Email ,
+            user.Value.Password ,
+            user.Value.IsAdmin ,
+            user.Value.IsEditor);
+
+        var refreshTokenCommand = new GenerateRefreshTokenCommand(user.Value);
+        var refreshToken = await _mediator.Send(refreshTokenCommand);
+        
+        return user.Match(
+            user => Ok(new LoginUserResponse(
                 userId: user.Id,
                 name: user.Name,
                 email: user.Email,
                 username: user.Username,
                 password: user.Password,
+                token: token,
+                refreshToken: refreshToken,
                 isAdmin: user.IsAdmin,
                 isEditor: user.IsEditor,
                 isDelete: user.IsDelete,
@@ -61,12 +73,6 @@ public class UserController
                 isAdmin : request.isAdmin,
                 isEditor : request.isEditor);
         var response = await _mediator.Send(command);
-
-        var token = _jwtGenerator.GenerateJwtToken(response.Value.Id ,
-            response.Value.Email ,
-            response.Value.Password ,
-            response.Value.IsAdmin ,
-            response.Value.IsEditor);
         
         return response.Match(
             user => CreatedAtAction(nameof(LoginUser),
@@ -79,7 +85,6 @@ public class UserController
                 password: user.Password,
                 isAdmin: user.IsAdmin,
                 isEditor: user.IsEditor,
-                JwtToken: token,
                 modifiedDate: user.ModifiedDate,
                 createDate: user.CreateDate)),
             Problem);
@@ -120,6 +125,7 @@ public class UserController
                 email: user.Email,
                 username: user.Username,
                 password: user.Password,
+                refreshToken: user.RefreshToken,
                 isAdmin: user.IsAdmin,
                 isEditor: user.IsEditor,
                 isDelete: user.IsDelete,
@@ -144,6 +150,7 @@ public class UserController
                 email: user.Email,
                 username: user.Username,
                 password: user.Password,
+                refreshToken: user.RefreshToken,
                 isAdmin: user.IsAdmin,
                 isEditor: user.IsEditor,
                 isDelete: user.IsDelete,

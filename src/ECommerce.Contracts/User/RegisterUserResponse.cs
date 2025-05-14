@@ -8,6 +8,5 @@ public record RegisterUserResponse
         string password,
         bool isAdmin,
         bool isEditor,
-        string JwtToken,
         DateTime modifiedDate,
         DateTime createDate);

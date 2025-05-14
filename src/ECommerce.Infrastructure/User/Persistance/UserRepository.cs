@@ -18,6 +18,11 @@ internal class UserRepository
         return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
     }
 
+    public async Task<UserModel> GetByRefreshTokenAsync(string refreshToken)
+    {
+        return await _dbContext.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+    }
+
     public async Task<UserModel> LoginValidationAsync(string email, string password)
     {
         return await _dbContext.Users

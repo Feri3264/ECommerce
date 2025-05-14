@@ -16,6 +16,7 @@ public class UserModel : BaseModel
     public bool IsAdmin { get; private set; }
     public bool IsEditor { get; private set; }
     public bool IsDelete { get; private set; }
+    public string? RefreshToken { get; private set; }
 
     //navigations
     public readonly List<Guid>? AddressIds = new();
@@ -48,6 +49,11 @@ public class UserModel : BaseModel
     
 
     //methods
+    public void SetRefreshToken(string refreshToken)
+    {
+        RefreshToken = refreshToken;
+    }
+    
     public ErrorOr<Success> AddAddress(Guid id)
     {
         if (AddressIds.Contains(id))
